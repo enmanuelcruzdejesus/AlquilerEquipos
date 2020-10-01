@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AlquilerEquipos"
+    }
+  },
+  "defaultProject": "AlquilerEquipos",
+  "cli": {
+    "analytics": false
+  }
 }
