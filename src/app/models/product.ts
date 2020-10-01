@@ -2,7 +2,7 @@ export class Product{
     id: number;
     descrip: string;
     unitprice: number;
-    stockunits: number;
+    unitsinstock: number;
     img: string;
     family: string;
     subfamily : string;

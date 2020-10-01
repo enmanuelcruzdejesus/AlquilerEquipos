@@ -1,1 +1,34 @@
-<p>product-list works!</p>
+<div class="container">
+    <h2>Manage Products</h2>
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Unitprice</th>
+                <th>UnitInStock</th>
+                <th>Family</th>
+                <th>Subfamily</th>
+                <th>Img</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+               <td>{{product.id}}</td>
+               <td>{{product.descrip}}</td>
+               <td>{{product.unitprice}}</td>
+               <td>{{product.unitsinstock}}</td>
+               <td>{{product.family}}</td>
+               <td>{{product.subfamily}}</td>
+               <td>{{product.img}}</td>
+               <td>
+                    <button  class="btn btn-primary" (click)="edit(product)">Edit</button>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" (click)="add()" >Save</button>
+</div>
+
+

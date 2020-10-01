@@ -24,6 +24,8 @@ const routes: Routes = [
   {path:'login' , component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path:'product-list' , component: ProductListComponent},
+  {path:'create-product' , component: CreateProductComponent},
+  {path:'edit-product' , component: EditProductComponent},
   {path:'edit-customer' , component: EditCustomerComponent},
   {path:'create-customer' , component: CreateCustomerComponent},
   {path:'average-product-rent' , component: AverageproductrentbydateComponent},

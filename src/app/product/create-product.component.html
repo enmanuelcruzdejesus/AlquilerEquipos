@@ -1,1 +1,51 @@
-<p>create-product works!</p>
+
+<div class="container">
+    <h3>New Product</h3>
+    <form action="" method="POST" >
+       <div class="form-group">
+           <label for="id" class="control-label">Id</label>
+           <input type="text" id="id" name="id"  [(ngModel)] = "product.id" class="col-md-5 form-control">
+       </div>
+       
+        <div class="form-group">
+           <label for="descrip" class="control-label">Description</label>
+           <input type="text" id="descrip" name="descrip"   [(ngModel)] = "product.descrip" class="col-md-5 form-control" >      
+        </div>
+      
+        <div class="form-group">
+           <label for="unitprice" class="control-label">UnitPrice</label>
+           <input type="text" id="unitprice" name="unitprice" class="col-md-5 form-control"  [(ngModel)]="product.unitprice">    
+        </div>
+   
+   
+        <div class="form-group">
+            <label for="unitsinstock" class="control-label">Units in Stock</label>
+            <input type="text" id="unitsinstock" class="col-md-5 form-control" name="unitsinstock" [(ngModel)]="product.unitsinstock">    
+         </div>
+
+         <div class="form-group">
+            <label for="family" class="control-label">Family</label>
+            <input type="text" id="family" class="col-md-5 form-control" name="family" [(ngModel)]="product.family">    
+         </div>
+
+         <div class="form-group">
+            <label for="family" class="control-label">Sub Family</label>
+            <input type="text" id="subfamily" class="col-md-5 form-control" name="subfamily" [(ngModel)]="product.subfamily">    
+         </div>
+
+         <div class="form-group">
+            <label for="img" class="control-label">Img</label>
+            <input type="text" id="img" class="col-md-5 form-control" name="img" [(ngModel)]="product.img">    
+         </div>
+
+      
+        <div class="panel-footer">
+           <button class="btn btn-primary" (click)="save()">Save</button>    
+        </div>
+ 
+      
+      
+   </form>
+ </div>
+    
+
