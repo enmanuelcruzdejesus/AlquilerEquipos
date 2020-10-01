@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AlquilerEquipos';
+
+
+  userLoggedIn(): boolean{
+    // return this.service.loggedIn();    
+    return true;
+  }
+
+
+  ngOnInit(){
+
+     
+  }
+  Logout(){
+    // this.service.logoutUser();
+    // this.router.navigate(['/login']);
+    return true;
+      
+  }
+
 }
