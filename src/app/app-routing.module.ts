@@ -1,3 +1,6 @@
+import { UnreturnedProductRentComponent } from './invoice/unreturned-product-rent.component';
+import { RenthistoryComponent } from './customer/renthistory.component';
+import { AverageproductrentbydateComponent } from './product/averageproductrentbydate.component';
 import { CreateInvoiceComponent } from './invoice/create-invoice.component';
 import { InvoiceListComponent } from './invoice/invoice-list.component';
 import { CreateProductComponent } from './product/create-product.component';
@@ -22,12 +25,14 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path:'product-list' , component: ProductListComponent},
   {path:'edit-customer' , component: EditCustomerComponent},
-  {path:'post-customer' , component: CreateCustomerComponent},
+  {path:'create-customer' , component: CreateCustomerComponent},
+  {path:'average-product-rent' , component: AverageproductrentbydateComponent},
   {path:'customer-list' , component: CustomerListComponent},
   {path: 'edit-customer', component: EditCustomerComponent},
-  {path: 'post-customer', component: CreateCustomerComponent },
+  {path:'rent-history' , component: RenthistoryComponent},
   {path:'admin-panel' , component: AdminPanelComponent},
   {path:'invoice-list' , component: InvoiceListComponent},
+  {path:'unreturned-product-rent' , component: UnreturnedProductRentComponent},
   {path:'create-invoice' , component: CreateInvoiceComponent},
   {path: '**' , component: PagenotfoundComponent}
  
@@ -38,9 +43,17 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[MainPageComponent,LoginComponent,RegisterComponent,AdminPanelComponent,ProductListComponent,EditProductComponent,CreateProductComponent,CustomerListComponent,
-  EditCustomerComponent,CreateCustomerComponent,
+export const routingComponents=[MainPageComponent,LoginComponent,RegisterComponent,AdminPanelComponent,
+  ProductListComponent,
+  EditProductComponent,
+  CreateProductComponent,
+  AverageproductrentbydateComponent,
+  CustomerListComponent,
+  EditCustomerComponent,
+  CreateCustomerComponent,
+  RenthistoryComponent,
   InvoiceListComponent,
+  UnreturnedProductRentComponent,
   CreateInvoiceComponent,
   PagenotfoundComponent];
 

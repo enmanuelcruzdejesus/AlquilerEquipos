@@ -1,1 +1,36 @@
-<p>edit-customer works!</p>
+
+<div class="container">
+   <h3>Edit Customer</h3>
+    <form action="" method="POST" >
+       <div class="form-group">
+           <label for="id" class="control-label">Id</label>
+           <input type="text" id="id" name="id"  [(ngModel)] = "customer.id" class="col-md-5 form-control">
+       </div>
+       
+        <div class="form-group">
+           <label for="name" class="control-label">Identification</label>
+           <input type="text" id="Identification" name="Identification"   [(ngModel)] = "customer.identification" class="col-md-5 form-control" >      
+        </div>
+      
+        <div class="form-group">
+           <label for="desc" class="control-label">Name</label>
+           <input type="text" id="name" name="name" class="col-md-5 form-control"  [(ngModel)]="customer.name">    
+        </div>
+   
+   
+        <div class="form-group">
+            <label for="price" class="control-label">Img</label>
+            <input type="text" id="img" class="col-md-5 form-control" name="img" [(ngModel)]="customer.img">    
+         </div>
+
+      
+        <div class="panel-footer">
+           <button class="btn btn-primary" (click)="save()">Save</button>    
+        </div>
+ 
+      
+      
+   </form>
+ </div>
+    
+

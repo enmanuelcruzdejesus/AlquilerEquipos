@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" routerLink="/jobs">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
           </li>
 
           <li class="nav-item dropdown">
@@ -20,8 +20,8 @@
                Rents
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Manage Rents</a>
-              <a class="dropdown-item" href="#">Unreturned Product Rents</a>
+              <a class="dropdown-item"routerLink="invoice-list">Manage Rents</a>
+              <a class="dropdown-item" routerLink="unreturned-product-rent">Unreturned Product Rents</a>
             </div>
           </li>
 
@@ -30,8 +30,8 @@
               Products
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Manage Products</a>
-              <a class="dropdown-item" href="#">Average Product Rent by date</a>
+              <a class="dropdown-item"routerLink="product-list">Manage Products</a>
+              <a class="dropdown-item" routerLink="average-product-rent">Average Product Rent By Date</a>
             </div>
           </li>
 
@@ -40,8 +40,8 @@
               Customers
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Manage Customer</a>
-              <a class="dropdown-item" href="#">Rent Customer History</a>
+              <a class="dropdown-item" routerLink="customer-list">Manage Customer</a>
+              <a class="dropdown-item" routerLink="rent-history">Rent Customer History</a>
             </div>
           </li>
 

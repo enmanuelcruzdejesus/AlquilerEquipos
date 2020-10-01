@@ -20,13 +20,19 @@ import { PagenotfoundComponent } from './home/pagenotfound.component';
 import { from } from 'rxjs';
 import { InvoiceListComponent } from './invoice/invoice-list.component';
 import { CreateInvoiceComponent } from './invoice/create-invoice.component';
+import { UnreturnedProductRentComponent } from './invoice/unreturned-product-rent.component';
+import { RenthistoryComponent } from './customer/renthistory.component';
+import { AverageproductrentbydateComponent } from './product/averageproductrentbydate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     InvoiceListComponent,
-    CreateInvoiceComponent
+    CreateInvoiceComponent,
+    UnreturnedProductRentComponent,
+    RenthistoryComponent,
+    AverageproductrentbydateComponent
    
   ],
   imports: [

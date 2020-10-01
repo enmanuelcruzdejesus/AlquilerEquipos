@@ -1,1 +1,27 @@
-<p>customer-list works!</p>
+<div class="container">
+    <h2>Manage Customers</h2>
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Identification</th>
+                <th>Name</th>
+                <th>Img</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers">
+               <td>{{customer.id}}</td>
+               <td>{{customer.identification}}</td>
+               <td>{{customer.name}}</td>
+               <td>{{customer.img}}</td>
+               <td>
+                    <button  class="btn btn-primary" (click)="edit(customer)">Edit</button>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" (click)="add()" >Save</button>
+</div>
+
