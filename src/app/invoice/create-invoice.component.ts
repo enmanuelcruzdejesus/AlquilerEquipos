@@ -9,6 +9,8 @@ import { Product } from './../models/product';
 import { Customer } from './../models/customer';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
+import { InvoiceDetailsItemsService } from '../services/invoice-items.service';
 
 
 
@@ -24,12 +26,14 @@ export class CreateInvoiceComponent implements OnInit {
   details: InvoiceDetails[] = [];
   customers : Customer[];
   products: Product[];
+  currentCustomer: Customer;
   isValid: boolean;
 
 
 
 
-  constructor(private service: InvoiceService, 
+  constructor(public service: InvoiceService, 
+    private itemService: InvoiceDetailsItemsService,
     private customerService: CustomerService,
     private prodService: ProductService, 
     private router: Router,
@@ -61,37 +65,53 @@ export class CreateInvoiceComponent implements OnInit {
     });
   }
 
-  onDeleteOrderItem(orderItemID: number, i: number) {
+  onDeleteOrderItem(id: number, i: number) {
     // if (orderItemID != null)
     //   this.service.formData.DeletedOrderItemIDs += orderItemID + ",";
-    // this.service.orderItems.splice(i, 1);
-    // this.updateGrandTotal();
+    this.service.details.splice(i, 1);
+    this.updateGrandTotal();
   }
 
   updateGrandTotal() {
-    // this.service.formData.GTotal = this.service.orderItems.reduce((prev, curr) => {
-    //   return prev + curr.Total;
-    // }, 0);
-    // this.service.formData.GTotal = parseFloat(this.service.formData.GTotal.toFixed(2));
+    this.invoice.total = this.service.details.reduce((prev, curr) => {
+      return prev + curr.value;
+    }, 0);
+    this.invoice.total = parseFloat(this.invoice.total.toFixed(2));
   }
+
+ 
 
   validateForm() {
-    // this.isValid = true;
-    // if (this.service.formData.CustomerID == 0)
-    //   this.isValid = false;
-    // else if (this.service.orderItems.length == 0)
-    //   this.isValid = false;
-    // return this.isValid;
+    this.isValid = true;
+    if (this.invoice.customerid == 0)
+      this.isValid = false;
+    else if (this.service.details.length == 0)
+      this.isValid = false;
+    return this.isValid;
   }
 
-  onSubmit() {
-    // if (this.validateForm()) {
-    //   this.service.saveOrUpdateOrder().subscribe(res => {
-    //     this.resetForm();
-    //     this.toastr.success('Submitted Successfully', 'Restaurent App.');
-    //     this.router.navigate(['/orders']);
-    //   })
-    // }
+  onSubmit(form : NgForm) {
+    if (this.validateForm()) {
+      this.invoice.items = this.service.details;
+      this.customerService.getCustomerById(this.invoice.customerid).subscribe((res)=>{
+        this.currentCustomer = res;
+        this.invoice.customer = this.currentCustomer;
+        console.log(this.currentCustomer);
+        this.service.saveInvoice(this.invoice).subscribe(res => {
+          // this.resetForm();
+          // this.toastr.success('Submitted Successfully', 'Restaurent App.');
+          
+          this.router.navigate(['/invoice-list']);
+        },(err)=>{
+          console.error(err);
+        })
+      },(err)=>{
+        console.log(err);
+      })
+      
+
+    
+    }
   }
 
 }

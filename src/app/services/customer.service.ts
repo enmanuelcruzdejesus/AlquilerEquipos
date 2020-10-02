@@ -20,7 +20,7 @@ export class CustomerService {
 
   getCustomerById(id: number){
 
-    return this.httpClient.get<Customer>(`${HttpClientHelper.baseURL}/customer/getById`+id,this.httpOptions);
+    return this.httpClient.get<Customer>(`${HttpClientHelper.baseURL}/customer/getById/`+id,this.httpOptions);
   }
 
   saveCustomer(Customer: Customer): Observable<any>{

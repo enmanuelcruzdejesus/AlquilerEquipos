@@ -1,4 +1,5 @@
-<form autocomplete="off"  >
+<div class="container">
+  <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" >
     <input type="hidden"  name="OrderID" #OrderID="ngModel" [(ngModel)]="invoice.id">
     <div class="row">
       <div class="col-md-6">
@@ -14,7 +15,7 @@
         <div class="form-group">
           <label>Customer</label>
           <select name="customerid" #CustomerID="ngModel" [(ngModel)]="invoice.customerid" class="form-control"
-          [class.is-invalid]="invoice.customerid==0">
+          [class.is-invalid]="invoice.customerid==0"  >
             <option value="0">-Select-</option>
             <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.name}}</option>
           </select>
@@ -83,8 +84,8 @@
           <td>{{item.quantity}}</td>
           <td>{{item.value}}</td>
           <td>
-            <a class="btn btn-sm btn-info text-white" >Edit<i class="fa fa-pencil"></i></a>
-            <a class="btn btn-sm btn-danger text-white ml-1" >Delete<i class="fa fa-trash"></i></a>
+            <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,item.id)">Edit<i class="fa fa-pencil"></i></a>
+            <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteOrderItem(item.id,i)">Delete<i class="fa fa-trash"></i></a>
           </td>
         </tr>
       </tbody>
@@ -96,3 +97,4 @@
 
     {{invoice | json}}
   </form>
+</div>

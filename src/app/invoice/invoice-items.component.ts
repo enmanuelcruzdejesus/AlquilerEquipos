@@ -28,12 +28,19 @@ export class InvoiceItemsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.item  = new InvoiceDetails();
-    this.item.unitprice = 0;
-    this.item.quantity = 0;
-    this.item.value = 0;
-    this.item.invoiceid = 0;
-    this.item.product = new Product();
+    if(this.data.index == null){
+      this.item  = new InvoiceDetails();
+      this.item.unitprice = 0;
+      this.item.quantity = 0;
+      this.item.value = 0;
+      this.item.invoiceid = 0;
+      this.item.product = new Product();
+
+    }
+    else{
+      this.item = this.invoiceService.details[this.data.index];
+    }
+  
 
     this.productService.getProducts().subscribe((res)=>{
       this.products = res;
@@ -62,9 +69,15 @@ export class InvoiceItemsComponent implements OnInit {
   onSubmit(form: NgForm) {
     if(this.validateForm(form.value)){
       
-      this.invoiceService.details.push(this.item);
-      this.dialogRef.close();
+      if(this.data.index == null){
+        this.invoiceService.details.push(this.item);
+      }
+      else{
+        this.invoiceService.details[this.data.index] = this.item;
+      }
 
+     
+      this.dialogRef.close();
     }
    
 
