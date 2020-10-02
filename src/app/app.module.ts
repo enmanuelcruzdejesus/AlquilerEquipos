@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -23,6 +26,7 @@ import { CreateInvoiceComponent } from './invoice/create-invoice.component';
 import { UnreturnedProductRentComponent } from './invoice/unreturned-product-rent.component';
 import { RenthistoryComponent } from './customer/renthistory.component';
 import { AverageproductrentbydateComponent } from './product/averageproductrentbydate.component';
+import { InvoiceItemsComponent } from './invoice/invoice-items.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { AverageproductrentbydateComponent } from './product/averageproductrentb
     CreateInvoiceComponent,
     UnreturnedProductRentComponent,
     RenthistoryComponent,
-    AverageproductrentbydateComponent
+    AverageproductrentbydateComponent,
+    InvoiceItemsComponent
    
   ],
   imports: [
@@ -40,8 +45,11 @@ import { AverageproductrentbydateComponent } from './product/averageproductrentb
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
+  entryComponents:[InvoiceItemsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

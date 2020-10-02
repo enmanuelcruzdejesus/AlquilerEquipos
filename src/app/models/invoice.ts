@@ -1,7 +1,9 @@
+import { Customer } from './customer';
 export class Invoice {
     id: number;
+    customerid: number;
     orderdate: Date;
     deliverdate:Date;
-    customer: number;
     total: number;
+    customer: Customer;
 }

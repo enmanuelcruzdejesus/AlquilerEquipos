@@ -1,1 +1,98 @@
-<p>create-invoice works!</p>
+<form autocomplete="off"  >
+    <input type="hidden"  name="OrderID" #OrderID="ngModel" [(ngModel)]="invoice.id">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Order No.</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">#</div>
+            </div>
+            <input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="invoice.id" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Customer</label>
+          <select name="customerid" #CustomerID="ngModel" [(ngModel)]="invoice.customerid" class="form-control"
+          [class.is-invalid]="invoice.customerid==0">
+            <option value="0">-Select-</option>
+            <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.name}}</option>
+          </select>
+        </div>
+      </div>
+
+  
+    <div class="col-md-6">
+        <!-- <div class="form-group">
+          <label>Payment Method</label>
+          <select name="PMethod" #PMethod="ngModel" [(ngModel)]="service.formData.PMethod" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Cash">Cash</option>
+            <option value="Card">Card</option>
+          </select>
+        </div>  -->
+
+        <div class="form-group">
+          <label for="orderdate">Order Date</label>
+          <input type="datetime-local" id="orderdate" name="orderdate" [(ngModel)]="invoice.orderdate" placeholder="yyyy-MM-ddTHH:mm:ss" min="2018-01-01T00:00:00" max="2021-12-31T00:00:00" required />
+        </div>
+        <div class="form-group">
+          <label for="deliverdate">Deliver Date</label>
+          <input type="datetime-local" id="deliverdate" name="deliverdate" [(ngModel)]="invoice.deliverdate" placeholder="yyyy-MM-ddTHH:mm:ss" min="2018-01-01T00:00:00" max="2021-12-31T00:00:00" required />
+        </div>
+  
+        <!-- <div class="form-group">
+          <label>Deliver Date</label>
+          <input type="datetime-local" id="deliverdate" name="deliverdate" [[ngModel)]="invoice.deliverdate" placeholder="yyyy-MM-ddTHH:mm:ss" min="2018-01-01T00:00:00" max="2021-12-31T00:00:00" required />
+        </div>
+
+         -->
+        <div class="form-group">
+          <label>Grand Total</label>
+  
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input name="GTotal" #GTotal="ngModel" [(ngModel)]="invoice.total" class="form-control" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- order items table-->
+    <table class="table table-borderless">
+      <thead class="thead-light">
+        <th>Descrip</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>
+          <a class="btn btn-sm btn-success text-white"  (click)="AddOrEditOrderItem(null,invoice.id)"><i class="fa fa-plus"></i> Add Item</a>
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngIf="service.details.length==0" [class.text-danger]="service.details.length==0">
+          <td class="font-italic text-center" colspan="5">
+            No items selected for this order.
+          </td>
+        </tr>
+  
+        <tr *ngFor="let item of service.details;let i=index;">
+          <td>{{item.product.descrip}}</td>
+          <td>{{item.unitprice}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.value}}</td>
+          <td>
+            <a class="btn btn-sm btn-info text-white" >Edit<i class="fa fa-pencil"></i></a>
+            <a class="btn btn-sm btn-danger text-white ml-1" >Delete<i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-group">
+      <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+      <a class="btn btn-outline-dark ml-1" routerLink="invoice-list"><i class="fa fa-table"></i> View Orders</a>
+    </div>
+
+    {{invoice | json}}
+  </form>

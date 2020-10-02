@@ -1,3 +1,4 @@
+import { Product } from './product';
 export class InvoiceDetails{
     id: number;
     invoiceid: number;
@@ -5,5 +6,7 @@ export class InvoiceDetails{
     quantity: number;
     unitprice: number;
     value: number;
+    
+    product: Product;
     
 }

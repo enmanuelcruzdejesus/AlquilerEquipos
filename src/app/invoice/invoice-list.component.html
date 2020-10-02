@@ -1,1 +1,30 @@
-<p>invoice-list works!</p>
+<div class="container">
+    <h2>Manage Invoice</h2>
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Orderdate</th>
+                <th>Customer</th>
+                <th>Deliverdate</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invoice of invoices">
+               <td>{{invoice.id}}</td>
+               <td>{{invoice.orderdate}}</td>
+               <td>{{invoice.customer.name}}</td>
+               <td>{{invoice.deliverdate}}</td>
+               <td>{{invoice.total}}</td>
+               <td>
+                    <button  class="btn btn-primary" (click)="edit(invoice)">Edit</button>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" (click)="add()" >Add invoice</button>
+</div>
+
+
