@@ -32,6 +32,7 @@ export class InvoiceListComponent implements OnInit {
       queryParams: {
           "id": value.id,
           "orderdate": value.orderdate,
+          "customerid": value.customerid,
           "customer": value.customer,
           "deliverdate": value.deliverdate,
           "total": value.total

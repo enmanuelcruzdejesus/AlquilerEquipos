@@ -1,3 +1,6 @@
+import { User } from './../models/user';
+import { Router } from '@angular/router';
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  user = new User();
+  public response  : any = null;
 
-  ngOnInit(): void {
+ constructor(private service: UserService, private router: Router) { }
+
+ngOnInit(): void {
+}
+
+register() : void{
+    
+    this.service.registerUser(this.user).subscribe((res)=>{
+      if(res != null){
+        this.service.setToken(JSON.stringify(res));
+
+   //     this.toastr.Success("Sign Up was completed succesfully");
+        this.router.navigate(['/login']);
+
+      }
+    
+   },(err)=>{
+     console.error(err);
+   });
+
+
   }
-
 }

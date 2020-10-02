@@ -27,6 +27,7 @@ import { UnreturnedProductRentComponent } from './invoice/unreturned-product-ren
 import { RenthistoryComponent } from './customer/renthistory.component';
 import { AverageproductrentbydateComponent } from './product/averageproductrentbydate.component';
 import { InvoiceItemsComponent } from './invoice/invoice-items.component';
+import { EditInvoiceComponent } from './invoice/edit-invoice.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { InvoiceItemsComponent } from './invoice/invoice-items.component';
     UnreturnedProductRentComponent,
     RenthistoryComponent,
     AverageproductrentbydateComponent,
-    InvoiceItemsComponent
+    InvoiceItemsComponent,
+    EditInvoiceComponent
    
   ],
   imports: [

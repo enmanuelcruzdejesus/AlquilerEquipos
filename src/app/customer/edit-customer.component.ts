@@ -15,7 +15,7 @@ export class EditCustomerComponent implements OnInit {
   constructor(private service: CustomerService, private router: Router,private activeRoute: ActivatedRoute  ) { }
 
   ngOnInit(): void {
-    this.activeRoute.queryParams.subscribe(params => {
+      this.activeRoute.queryParams.subscribe(params => {
       this.customer.id = params["id"];
       this.customer.identification = params["identification"];
       this.customer.name = params["name"];

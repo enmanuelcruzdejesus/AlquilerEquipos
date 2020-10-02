@@ -1,5 +1,5 @@
 import { InvoiceItemsComponent } from './invoice-items.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../services/product.service';
 import { CustomerService } from './../services/customer.service';
 import { InvoiceService } from './../services/invoice.service';
@@ -37,6 +37,7 @@ export class CreateInvoiceComponent implements OnInit {
     private customerService: CustomerService,
     private prodService: ProductService, 
     private router: Router,
+    private activeRoute: ActivatedRoute,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -51,6 +52,26 @@ export class CreateInvoiceComponent implements OnInit {
       this.products = res;
 
     },(err)=>{console.log(err)});
+
+    // this.activeRoute.queryParams.subscribe(params => {
+    //   this.invoice.id = params["id"];
+    // });
+
+    // if(this.invoice.id == 0){
+    //   this.resetForm();
+
+    // }else{
+    //   this.service.getInvoiceById(this.invoice.id).subscribe((res)=>{
+    //     this.invoice = res;
+    //     console.log(this.invoice);
+        
+
+    //   },(err)=>{
+    //     console.log(err);
+    //   })
+    // }
+
+    
     
   }
 
@@ -89,6 +110,23 @@ export class CreateInvoiceComponent implements OnInit {
       this.isValid = false;
     return this.isValid;
   }
+
+
+  resetForm(form?: NgForm) {
+    if (form = null)
+      form.resetForm();
+
+    this.invoice.id =0;
+    this.invoice.customer = null;
+    this.invoice.customerid = 0;
+    this.invoice.orderdate = null;
+    this.invoice.deliverdate = null;
+    this.invoice.total = 0;
+    this.invoice.items = [];
+    
+  
+  }
+
 
   onSubmit(form : NgForm) {
     if (this.validateForm()) {

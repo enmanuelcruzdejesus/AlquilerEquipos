@@ -1,3 +1,4 @@
+import { AuthguardService } from './services/authguard.service';
 import { UnreturnedProductRentComponent } from './invoice/unreturned-product-rent.component';
 import { RenthistoryComponent } from './customer/renthistory.component';
 import { AverageproductrentbydateComponent } from './product/averageproductrentbydate.component';
@@ -20,22 +21,23 @@ import { CreateCustomerComponent } from './customer/create-customer.component';
 
 const routes: Routes = [
   {path: '' , redirectTo: "/home" , pathMatch: 'full'},
-  {path: 'home' , component: MainPageComponent},
+  {path: 'home' , component: MainPageComponent, canActivate:[AuthguardService]},
   {path:'login' , component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path:'product-list' , component: ProductListComponent},
-  {path:'create-product' , component: CreateProductComponent},
-  {path:'edit-product' , component: EditProductComponent},
-  {path:'edit-customer' , component: EditCustomerComponent},
-  {path:'create-customer' , component: CreateCustomerComponent},
-  {path:'average-product-rent' , component: AverageproductrentbydateComponent},
-  {path:'customer-list' , component: CustomerListComponent},
-  {path: 'edit-customer', component: EditCustomerComponent},
-  {path:'rent-history' , component: RenthistoryComponent},
-  {path:'admin-panel' , component: AdminPanelComponent},
-  {path:'invoice-list' , component: InvoiceListComponent},
-  {path:'unreturned-product-rent' , component: UnreturnedProductRentComponent},
-  {path:'create-invoice' , component: CreateInvoiceComponent},
+  {path:'product-list' , component: ProductListComponent, canActivate:[AuthguardService]},
+  {path:'create-product' , component: CreateProductComponent, canActivate:[AuthguardService]},
+  {path:'edit-product' , component: EditProductComponent, canActivate:[AuthguardService]},
+  {path:'edit-customer' , component: EditCustomerComponent, canActivate:[AuthguardService]},
+  {path:'create-customer' , component: CreateCustomerComponent, canActivate:[AuthguardService]},
+  {path:'average-product-rent' , component: AverageproductrentbydateComponent, canActivate:[AuthguardService]},
+  {path:'customer-list' , component: CustomerListComponent, canActivate:[AuthguardService]},
+  {path: 'edit-customer', component: EditCustomerComponent, canActivate:[AuthguardService]},
+  {path:'rent-history' , component: RenthistoryComponent, canActivate:[AuthguardService]},
+  {path:'admin-panel' , component: AdminPanelComponent, canActivate:[AuthguardService]},
+  {path:'invoice-list' , component: InvoiceListComponent, canActivate:[AuthguardService]},
+  {path:'unreturned-product-rent' , component: UnreturnedProductRentComponent, canActivate:[AuthguardService]},
+  {path:'create-invoice' , component: CreateInvoiceComponent, canActivate:[AuthguardService]},
+  {path:'edit-invoice' , component: CreateInvoiceComponent, canActivate:[AuthguardService]},
   {path: '**' , component: PagenotfoundComponent}
  
 ];

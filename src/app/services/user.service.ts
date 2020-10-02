@@ -3,6 +3,7 @@ import { User } from './../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ObserversModule } from '@angular/cdk/observers';
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +16,60 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getEstudiantes(): Observable<User[]>{
+  
+  setToken(token: string){
+  
+    localStorage.setItem('user',token);
+  }
+
+  loggedIn(): boolean{
+    return !!localStorage.getItem('user');
+  }
+
+  login(user: User): Observable<any>{
+    return this.httpClient.post<any>(`${HttpClientHelper.baseURL}/user/login`,user,this.httpOptions);
+  }
+
+  getCurrentUser(): User{
+
+    if(this.loggedIn()){
+      let u =  JSON.parse(localStorage.getItem('user')) ;
+      return u;
+
+    }
+    else{
+     return null;
+    }
+  
+  }
+
+
+  logoutUser(): void{
+    localStorage.removeItem('token');
+    
+  }
+
+
+
+  getAllUsers(): Observable<User[]>{
     return this.httpClient.get<User[]>(`${HttpClientHelper.baseURL}/user/getAll`,this.httpOptions);
   }
 
-  getEstudianteById(id: number){
+  registerUser(user: User): Observable<any>{
+          
+    return this.httpClient.post<any>(`${HttpClientHelper.baseURL}/user/save`,user,this.httpOptions);
+  
+  }
+  getUserById(id: number){
 
     return this.httpClient.get<User>(`${HttpClientHelper.baseURL}/user/getById`+id,this.httpOptions);
   }
 
-  saveEstudiante(user: User): Observable<any>{
+  save(user: User): Observable<any>{
     return this.httpClient.post<User>(`${HttpClientHelper.baseURL}/user/save`,user);
   }
+
+
 
 
 

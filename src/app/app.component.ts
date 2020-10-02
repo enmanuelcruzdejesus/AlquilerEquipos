@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,10 +10,27 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'AlquilerEquipos';
 
+  constructor(private service: UserService, private router: Router){
+    
+  }
 
+  showNav(): boolean {
+
+    // if(this.getCurrentUrl() ==='/login' || this.getCurrentUrl() === '/register')
+    // return false;
+
+    // return true;
+
+    return this.service.loggedIn();
+
+  }
+
+  getCurrentUrl(): string{
+    return this.router.url;
+  }
+  
   userLoggedIn(): boolean{
-    // return this.service.loggedIn();    
-    return true;
+    return this.service.loggedIn();    
   }
 
 
@@ -20,9 +39,8 @@ export class AppComponent {
      
   }
   Logout(){
-    // this.service.logoutUser();
-    // this.router.navigate(['/login']);
-    return true;
+    this.service.logoutUser();
+    this.router.navigate(['/login']);
       
   }
 
